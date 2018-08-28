@@ -31,7 +31,7 @@ After these instructions, open your browser and go to the next url [http://local
 
 For **Redis** client declaration you can use the following instruction inside where you need it
 
-```
+```js
 const client = redis.createClient();
 
 client.on('connect', () => {
