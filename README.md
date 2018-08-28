@@ -26,7 +26,7 @@ After these instructions, open your browser and go to the next url [http://local
   ```
 * Use ``client.RPUSH('key', value)`` to insert a value to the right of the elements
 * Use ``client.LRANGE('key', 0, -1)`` to get all the values of the list
-* Use ``client.LREM('key', 0, 'value');`` to remove an element of the list by value
+* Use ``client.LREM('key', 0, 'value')`` to remove an element of the list by value
 
 
 For **Redis** client declaration you can use the following instruction inside where you need it
