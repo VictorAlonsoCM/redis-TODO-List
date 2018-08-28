@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+  <title>Redis TODO List</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center"> <%= title %> </h1>
+    <form action="/todo/add" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" name="todos" placeholder="Send a message...">
+      </div>
+    </form>
+    <form action="/todo/delete" method="POST">
+    
+      <% todo.forEach( (list) => { %>
+        <div class="alert alert-success">
+          <input type="checkbox" class="form-check-input mt-2" name="todo" value="<%= counter %>">
+          <h4 class="d-inline">> </h4> <strong><%= list %></strong>
+        </div>
+        <% counter++ %>
+      <% }) %>
+        <input type="submit" value="Remove" class="btn btn-primary">
+    </form>
+    <br>
+  </div>
+</body>
+</html>
