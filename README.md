@@ -11,10 +11,10 @@ If you want to view the web application in your computer, first you need to have
 npm install 
 ```
 and then 
- ```shell
-  node .
-  ```
-  After these instructions, open your browser and go to the next url [http://localhost:3000/](http://localhost:3000/)
+```shell
+node .
+```
+After these instructions, open your browser and go to the next url [http://localhost:3000/](http://localhost:3000/)
 
 ### Details about the project and code
 ---
