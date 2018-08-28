@@ -10,7 +10,7 @@ If you want to view the web application in your computer, first you need to have
 ```shell
 npm install 
 ```
- and then 
+and then 
  ```shell
   node .
   ```
