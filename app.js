@@ -1,32 +1,29 @@
-//Declarations
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const port = 3000
 const redis = require('redis');
 
-//Initialization of express
 var app = express();
 
-//Redis Client
-const client = redis.createClient();
+const client = redis.createClient({ url: process.env.REDIS_URL });
+
 
 client.on('connect', () => {
   console.log('Connected to Redis...');
 });
 
-//View engine
 app.set('views'), path.join(__dirname, 'views');
 app.set('view engine', 'ejs');
 
-//Normalization of the elements used
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
-//This is our router
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.get('/', (req, res) => {
-  var title = 'Redis TODO List';
+  var title = 'A Simple Todo List App';
   var counter = 0;
   client.LRANGE('todo', 0, -1, (err, reply) => {
     if(err){
@@ -40,7 +37,6 @@ app.get('/', (req, res) => {
   });
 });
 
-//Add messages on redis
 app.post('/todo/add', (req, res, next) => {
   var todo = req.body.todos;
   client.RPUSH('todo', todo, (err, reply) => {
@@ -51,7 +47,6 @@ app.post('/todo/add', (req, res, next) => {
   });
 });
 
-//Delete messages on redis by index
 app.post('/todo/delete', (req, res, next) => {
   var delTODO = req.body.todo;
   var deleted = '__DELETED__';
@@ -64,7 +59,6 @@ app.post('/todo/delete', (req, res, next) => {
   });
 });
 
-//Port listen of the app
 app.listen(3000, () => {
   console.log('Server Started at port 3000...');
 });

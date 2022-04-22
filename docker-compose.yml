@@ -1,0 +1,19 @@
+services:
+  
+  app:
+    build: ./
+    volumes:
+       - ./:/var/www/app
+    ports:
+      - 3000:3000
+    environment:
+      - REDIS_URL=redis://db:6379
+      - NODE_ENV=development
+      - PORT=3000
+    command:
+       sh -c 'node app.js'
+    depends_on:
+      - db
+ 
+  db:
+    image: redis
