@@ -1,4 +1,6 @@
 FROM node:lts-alpine
+
+COPY package*.json ./
   
 WORKDIR '/var/www/app'
 
