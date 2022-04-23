@@ -1,6 +1,6 @@
 # A Simple To-do List using Node.js, Express and Redis
 
-This is dockerized version of the [original app](https://github.com/VictorAlonsoCM/redis-TODO-List) that uses Redis and Express.JS.
+This is dockerized version of the [original app](https://github.com/VictorAlonsoCM/redis-TODO-List) that uses Redis and Express. 
 It uses Docker compose to let the frontend Node.js talk to the backend Redis.
 
 Please note that this is only for development purpose and not for the Prod.
