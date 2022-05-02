@@ -1,47 +1,62 @@
-# redis-TODO-List
+# A Simple To-do List using Docker
 
-This is TODO List made using **Redis**, **EJS**, **Express**, **Node.js** and **Bootstrap 4**. Where you can write and delete any element that you want.
+This is dockerized version of the [original app](https://github.com/VictorAlonsoCM/redis-TODO-List) that uses Node.js, Express, Bootstrap and Redis. 
+It uses Docker compose to build both the frontend and backend.
 
-## Project preview
-![Project preview](readme-images/website-preview.png)
+<img width="1323" alt="Screen Shot 2022-04-21 at 4 05 40 PM" src="https://user-images.githubusercontent.com/313480/164441075-6e9fec0d-e762-41de-b91d-a234593f7bfb.png">
 
-## Getting started:
-If you want to view the web application in your computer, first you need to have Installed [NodeJS](https://nodejs.org/es/), second you will need to install a [Redis Server and CLI](https://redis.io/download), finally you will need to type the following instructions on your terminal inside the project folder 
-```shell
-npm install 
+
+## Tech Stack
+
+- NPM – a node package manager used for Node.js app development 
+- Node.js – our runtime for building web applications
+- Express – a backend web-application framework for Node.js 
+- Bootstrap – a toolkit for responsive, front-end web development
+- Redis – an in-memory, key-value, NoSQL database used for caching, data storage, and message brokering
+- Docker Desktop – a suite of software-development tools for creating, sharing, and running individual containers
+
+
+## Pre-requisite
+
+- [Download and Install Docker Desktop](https://docs.docker.com/desktop/) 
+
+
+
+## Bring up the application
+
+We will be using `docker-compose` utility to bring up the app.
+
 ```
-and then 
-```shell
-node .
+services:
+  
+  app:
+    build: ./
+    volumes:
+       - ./:/var/www/app
+    ports:
+      - 3000:3000
+    environment:
+      - REDIS_URL=redis://db:6379
+      - NODE_ENV=development
+      - PORT=3000
+    command:
+       sh -c 'node app.js'
+    depends_on:
+      - db
+ 
+  db:
+    image: redis
+ ```
+ 
+ 
+Bring up the app: 
+
 ```
-After these instructions, open your browser and go to the next url [http://localhost:3000/](http://localhost:3000/)
-
-### Details about the project and code
----
-* The server where the data is storage is Redis and it is saving the data in a list element.
-* Using a Redis client we can write, read and delete the elements of the list.
-* You can install the Redis client by using the following instruction: 
-  ```shell
-  npm install redis --save
-  ```
-* Use ``client.RPUSH('key', value)`` to insert a value to the right of the elements
-* Use ``client.LRANGE('key', 0, -1)`` to get all the values of the list
-* Use ``client.LREM('key', 0, 'value')`` to remove an element of the list by value
-
-
-For **Redis** client declaration you can use the following instruction inside where you need it
-
-```js
-const client = redis.createClient();
-
-client.on('connect', () => {
-  console.log('Connected to Redis...');
-});
+docker-compose up -d
 ```
 
-### Dependencies used for this project are:
----
-* body-parser: 1.18.3
-* ejs: 2.6.1
-* express: 4.16.3
-* redis: 2.8.0
+## Accessing the app
+
+Open https://localhost:3000 to see the todo-list app up and running.
+
+

@@ -1,22 +1,31 @@
 {
-  "name": "redis-TODO-List",
+  "name": "todolist",
   "version": "1.0.0",
-  "description": "Simple to do list",
+  "description": "A Sample Todo-List app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajeetraina/todolist.git"
   },
   "keywords": [
-    "Redis",
-    "ExpressJS",
-    "EJS"
+    "node.js"
   ],
-  "author": "Victor Contreras",
+  "author": "Ajeet Singh Raina",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajeetraina/todolist/issues"
+  },
+  "homepage": "https://github.com/ajeetraina/todolist#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "redis": "^2.8.0"
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "redis": "^4.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
